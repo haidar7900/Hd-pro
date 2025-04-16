@@ -2,7 +2,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>حيدر الجنابي | Cyber Portfolio</title>
+  <title>حيدر الجنابي | منصة الأمن السيبراني</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     * { box-sizing: border-box; }
@@ -31,9 +31,7 @@
     main { padding: 100px 20px 60px; max-width: 1200px; margin: auto; }
     section { margin-bottom: 60px; }
     h2 { color: #00fff0; margin-bottom: 20px; border-bottom: 1px solid #0ff; padding-bottom: 5px; }
-    .hero {
-      text-align: center;
-    }
+    .hero { text-align: center; }
     .hero img {
       width: 140px;
       border-radius: 50%;
@@ -68,11 +66,17 @@
       border-radius: 10px;
       text-align: center;
     }
-    .card img {
+    .card img, .gallery img {
       width: 100%;
       border-radius: 10px;
       margin-bottom: 10px;
     }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+    }
+    iframe { width: 100%; border-radius: 10px; height: 250px; }
     footer {
       text-align: center;
       padding: 20px;
@@ -80,15 +84,10 @@
       font-size: 13px;
       border-top: 1px solid #333;
     }
-    @media(max-width: 768px) {
-      nav { display: flex; flex-wrap: wrap; justify-content: center; }
-    }
+    #loginBox, #dashboard, #trainer { display: none; }
+    input[type="text"], input[type="password"] { width: 100%; padding: 10px; margin-top: 10px; background: #222; color: #fff; border: 1px solid #0ff; }
+    textarea { width: 100%; height: 100px; margin-top: 10px; padding: 10px; background: #222; color: #fff; border: 1px solid #0ff; }
   </style>
-  <script>
-    function scrollToSection(id) {
-      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-    }
-  </script>
 </head>
 <body>
   <header>
@@ -97,82 +96,137 @@
       <a href="#" onclick="scrollToSection('projects')">مشاريعي</a>
       <a href="#" onclick="scrollToSection('ai')">الذكاء الصناعي</a>
       <a href="#" onclick="scrollToSection('tools')">أدواتي</a>
-      <a href="#" onclick="scrollToSection('timeline')">المسار</a>
-      <a href="#" onclick="scrollToSection('faq')">أسئلة</a>
+      <a href="#" onclick="scrollToSection('trainer')">مدربي الذكي</a>
+      <a href="#" onclick="scrollToSection('gallery')">المعرض</a>
+      <a href="#" onclick="scrollToSection('certs')">الشهادات</a>
+      <a href="#" onclick="scrollToSection('scripts')">السكربتات</a>
       <a href="#" onclick="scrollToSection('contact')">تواصل</a>
+      <a href="#" onclick="toggleLogin()">تسجيل الدخول</a>
     </nav>
   </header>  <main>
     <section id="home" class="hero">
       <img src="profile.jpg" alt="حيدر الجنابي">
       <h1>حيدر الجنابي</h1>
-      <p>باحث أمني، مطور أدوات ذكية، خبير في اختبارات الاختراق والذكاء الصناعي</p>
-      <div>
-        <button class="btn" onclick="scrollToSection('projects')">مشاريعي</button>
-        <button class="btn" onclick="scrollToSection('contact')">تواصل</button>
-        <a href="Haidar-CV.pdf" class="btn" download>تحميل CV</a>
-      </div>
+      <p>باحث أمني، مطور أدوات، ومدرب ذكاء صناعي</p>
     </section><section id="projects">
   <h2>المشاريع</h2>
   <div class="grid">
-    <div class="card">
-      <img src="https://i.imgur.com/kXHJzEh.jpg" alt="X-HAWKEYE">
-      <p><strong>X-HAWKEYE</strong><br>أداة متقدمة لاختبار الاختراق تجمع بين الذكاء الاصطناعي وأدوات قوية.</p>
-    </div>
-    <div class="card">
-      <img src="https://i.imgur.com/I6XjZV5.jpg" alt="AutoRecon AI">
-      <p><strong>AutoRecon AI</strong><br>أداة فحص تلقائية عبر Termux وTelegram.</p>
-    </div>
+    <div class="card"><p>X-HAWKEYE: أداة اختبار متقدمة</p></div>
+    <div class="card"><p>AutoRecon: فحص تلقائي للمواقع</p></div>
   </div>
 </section>
 
 <section id="ai">
-  <h2>الذكاء الاصطناعي</h2>
+  <h2>مساعد AI للفحص</h2>
   <div class="card">
-    <p>اكتب مسار فحص:</p>
-    <input type="text" id="ai_input" placeholder="/login.php?id=1" style="width:100%;padding:10px;margin-top:10px;">
-    <pre id="ai_output" style="background:#111;color:#0f0;padding:10px;margin-top:10px;"></pre>
-    <button class="btn" onclick="document.getElementById('ai_output').textContent='→ استخدم nuclei + ffuf على '+document.getElementById('ai_input').value">اقترح</button>
+    <input type="text" id="ai_input" placeholder="/login?id=1">
+    <pre id="ai_output"></pre>
+    <button class="btn" onclick="document.getElementById('ai_output').textContent='→ استخدم nuclei + ffuf على '+document.getElementById('ai_input').value">تحليل ذكي</button>
   </div>
 </section>
 
 <section id="tools">
   <h2>أدواتي</h2>
   <div class="grid">
-    <div class="card"><i class="fas fa-bug fa-2x"></i><p>sqlmap</p></div>
-    <div class="card"><i class="fas fa-network-wired fa-2x"></i><p>nuclei</p></div>
-    <div class="card"><i class="fas fa-terminal fa-2x"></i><p>ffuf</p></div>
-    <div class="card"><i class="fas fa-laptop-code fa-2x"></i><p>Burp Suite</p></div>
+    <div class="card">sqlmap</div>
+    <div class="card">nuclei</div>
+    <div class="card">ffuf</div>
   </div>
 </section>
 
-<section id="timeline">
-  <h2>المسار المهني</h2>
-  <div class="grid">
-    <div class="card"><p>2021 - البداية وتعلم الأساسيات</p></div>
-    <div class="card"><p>2022 - الدخول إلى Bug Bounty</p></div>
-    <div class="card"><p>2023 - بناء أدوات متقدمة</p></div>
-    <div class="card"><p>2024 - دمج AI في أدوات الأمن</p></div>
-  </div>
-</section>
-
-<section id="faq">
-  <h2>الأسئلة الشائعة</h2>
+<section id="trainer">
+  <h2>المدرب الذكي</h2>
   <div class="card">
-    <p><strong>هل تعمل بمفردك؟</strong><br>نعم، لكن أرحب بالتعاون.</p>
-    <p><strong>ما هي أدواتك؟</strong><br>X-HAWKEYE، AutoRecon، وغيرها مخصصة لي.</p>
+    <p><strong>سؤال اليوم:</strong> ما الفرق بين XSS وSQLi؟</p>
+    <textarea placeholder="اكتب إجابتك..."></textarea>
+    <button class="btn">تحقق</button>
+    <p style="margin-top:10px; color:#0f0">نصيحة: استخدم أدوات Browser Dev Tools لتحليل الردود!</p>
   </div>
 </section>
+
+<section id="loginBox">
+  <h2>تسجيل الدخول</h2>
+  <div class="card">
+    <input type="text" id="username" placeholder="اسم المستخدم">
+    <input type="password" id="password" placeholder="كلمة المرور">
+    <button class="btn" onclick="loginUser()">دخول</button>
+    <p>ليس لديك حساب؟ <a href="#" onclick="signupUser()" style="color:#0ff">سجّل الآن</a></p>
+  </div>
+</section>
+
+<section id="dashboard">
+  <h2>لوحة النشر</h2>
+  <div class="card">
+    <textarea id="newPost" placeholder="اكتب منشورًا..."></textarea>
+    <button class="btn" onclick="postMessage()">نشر</button>
+    <div id="posts" style="margin-top:20px;"></div>
+  </div>
+</section>
+
+<section id="gallery">
+  <h2>معرض الصور والفيديوهات</h2>
+  <div class="gallery">
+    <img src="https://i.imgur.com/I6XjZV5.jpg" alt="صورة 1">
+    <img src="https://i.imgur.com/kXHJzEh.jpg" alt="صورة 2">
+    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+  </div>
+</section>
+
+<section id="certs">
+  <h2>الشهادات</h2>
+  <div class="grid">
+    <div class="card"><img src="https://i.imgur.com/6XHfDLD.png" alt="شهادة 1"><p>Certified Ethical Hacker - 2024</p></div>
+    <div class="card"><img src="https://i.imgur.com/OUqM9w3.png" alt="شهادة 2"><p>Web Application Security - 2023</p></div>
+  </div>
+</section>
+
+<section id="scripts">
+  <h2>السكربتات</h2>
+  <div class="card">
+    <p><strong>X-HAWKEYE</strong></p>
+    <a href="/scripts/x-hawkeye.py" class="btn" download>تحميل السكربت</a>
+    <pre style="text-align:left;direction:ltr"># sample script line
+
+print("X-HAWKEYE Launched")</pre> </div> </section>
 
 <section id="contact">
   <h2>تواصل</h2>
-  <div class="card">
-    <p><strong>Telegram:</strong> <a href="https://t.me/Haidar790" style="color:#0ff">@Haidar790</a></p>
-    <p><strong>Email:</strong> haidaralhelly@gmail.com</p>
-  </div>
+  <p>Email: haidaralhelly@gmail.com</p>
+  <p>Telegram: @Haidar790</p>
 </section>
 
   </main>  <footer>
     جميع الحقوق محفوظة © 2025 حيدر الجنابي
-  </footer>
-</body>
+  </footer>  <script>
+    function scrollToSection(id) {
+      document.querySelectorAll('main section').forEach(s => s.style.display = 'none');
+      document.getElementById(id).style.display = 'block';
+    }
+    function toggleLogin() { scrollToSection('loginBox'); }
+    function signupUser() {
+      const user = prompt("ادخل اسم المستخدم الجديد:");
+      const pass = prompt("ادخل كلمة المرور:");
+      localStorage.setItem(user, pass);
+      alert("تم إنشاء الحساب");
+    }
+    function loginUser() {
+      const u = document.getElementById('username').value;
+      const p = document.getElementById('password').value;
+      if(localStorage.getItem(u) === p){
+        alert("تم تسجيل الدخول");
+        scrollToSection('dashboard');
+      } else {
+        alert("بيانات غير صحيحة");
+      }
+    }
+    function postMessage() {
+      const content = document.getElementById('newPost').value;
+      if(content.trim() !== '') {
+        const box = document.getElementById('posts');
+        box.innerHTML += `<div style='background:#111;padding:10px;border:1px solid #0ff;margin-top:10px;'>${content}</div>`;
+        document.getElementById('newPost').value = '';
+      }
+    }
+    scrollToSection('home');
+  </script></body>
 </html>
