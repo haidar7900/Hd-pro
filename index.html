@@ -2,226 +2,185 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>حيدر الجنابي | بوابة الأمن السيبراني</title>
+  <title>حيدر الجنابي | Cyber Visual</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #0a0a0a;
+      background: #000;
       color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      overflow-x: hidden;
       scroll-behavior: smooth;
-      transition: background 0.3s, color 0.3s;
+      position: relative;
     }
-    .night-mode {
-      background: #fff;
-      color: #000;
-    }
-    .night-mode .sidebar, .night-mode .section {
-      background: #f2f2f2;
-      color: #111;
-    }
-    .sidebar {
+    canvas#bg {
       position: fixed;
       top: 0;
       left: 0;
+      z-index: -1;
+    }
+    .sidebar {
+      position: fixed;
       width: 240px;
       height: 100%;
       background: #111;
-      padding: 40px 20px;
+      padding: 30px 20px;
       overflow-y: auto;
     }
-    .sidebar h2 {
-      color: #00fff0;
-      text-align: center;
-      cursor: pointer;
-    }
+    .sidebar h2 { color: #0ff; text-align: center; cursor: pointer; }
     .sidebar a {
       display: block;
-      margin: 12px 0;
+      margin: 10px 0;
       padding: 10px;
       background: #222;
+      color: #0ff;
       text-align: center;
-      color: #00fff0;
       border-radius: 6px;
       text-decoration: none;
+      transition: 0.3s;
     }
-    .sidebar a:hover { background: #00fff0; color: #000; }
-    .main {
-      margin-left: 260px;
-      padding: 40px 30px;
-    }
-    section {
-      display: none;
-      padding-bottom: 40px;
-      animation: fadeIn 0.4s ease-in-out;
-    }
+    .sidebar a:hover { background: #0ff; color: #000; }
+    .main { margin-left: 260px; padding: 40px 30px; }
+    section { display: none; animation: fadeIn 0.6s ease-in-out; }
     section.active { display: block; }
-    h1, h2 { color: #00fff0; }
-    .hero {
-      text-align: center;
-      background: linear-gradient(to bottom, #002, #000);
-      padding: 60px 20px;
+    h2 { color: #0ff; border-bottom: 1px solid #0ff; padding-bottom: 5px; }
+    .cyber-card {
+      background: rgba(0,255,255,0.05);
+      border: 1px solid #0ff;
+      border-radius: 10px;
+      padding: 20px;
+      margin-top: 20px;
+      box-shadow: 0 0 20px #0ff3;
     }
+    .cyber-card img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+    button, .btn {
+      background: #0ff;
+      color: #000;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-weight: bold;
+      cursor: pointer;
+      margin: 10px 5px;
+      box-shadow: 0 0 10px #0ff;
+    }
+    .btn:hover { background: #00f8ff; }
+    .hero { text-align: center; padding: 60px 20px; }
     .hero img {
       width: 160px;
-      height: 160px;
       border-radius: 50%;
-      border: 4px solid #00fff0;
+      border: 4px solid #0ff;
     }
     .hero h1 {
       font-size: 28px;
       background: linear-gradient(to right, #00fff0, #0ff);
       -webkit-background-clip: text;
       color: transparent;
+      margin-top: 15px;
     }
-    .hero-buttons a {
-      margin: 10px;
-      padding: 10px 20px;
-      background: #00fff0;
-      color: #000;
-      border-radius: 20px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .social-icons { margin-top: 15px; }
-    .social-icons a { margin: 0 8px; color: #0ff; font-size: 20px; }
-    .tools, .timeline, .faq, .tower {
-      margin-top: 30px;
-      background: #111;
-      padding: 20px;
-      border-radius: 10px;
-    }
-    .tools i, .tower i {
-      font-size: 30px;
-      margin: 10px;
-      color: #00fff0;
-    }
-    .timeline div, .faq div {
-      margin-bottom: 10px;
-      border-bottom: 1px dashed #444;
-      padding-bottom: 8px;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 13px;
-      color: #aaa;
-    }
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    footer { text-align: center; color: #888; padding: 20px; margin-top: 30px; }
+    @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
   </style>
-  <script>
-    function switchSection(id) {
-      document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
-    }
-    function toggleMode() {
-      document.body.classList.toggle('night-mode');
-    }
-    function visitCounter() {
-      let visits = localStorage.getItem('visits') || 0;
-      visits++;
-      localStorage.setItem('visits', visits);
-      document.getElementById('counter').textContent = visits;
-    }
-    window.onload = function() {
-      switchSection('home');
-      visitCounter();
-    }
-  </script>
 </head>
-<body>
-  <div class="sidebar">
-    <h2 onclick="switchSection('home')">حيدر الجنابي</h2>
-    <a href="#" onclick="switchSection('about')">عنّي</a>
-    <a href="#" onclick="switchSection('projects')">مشاريعي</a>
-    <a href="#" onclick="switchSection('ai')">الذكاء الاصطناعي</a>
-    <a href="#" onclick="switchSection('tools')">أدواتي</a>
-    <a href="#" onclick="switchSection('timeline')">المسار المهني</a>
-    <a href="#" onclick="switchSection('tower')">برج الاختراق</a>
-    <a href="#" onclick="switchSection('faq')">الأسئلة</a>
-    <a href="#" onclick="switchSection('contact')">تواصل</a>
-    <a href="https://t.me/Haidar790" target="_blank">راسلني مباشر</a>
-    <button onclick="toggleMode()">تبديل الوضع</button>
-    <p style="margin-top:20px; text-align:center">عدد الزيارات: <span id="counter">0</span></p>
-  </div>  <div class="main">
-    <section id="home" class="hero active">
-      <img src="profile.jpg" alt="Haidar">
-      <h1>حيدر أسعد الجنابي</h1>
-      <p>باحث أمني، مطوّر أدوات ذكية، ومهتم بالذكاء الاصطناعي</p>
-      <div class="hero-buttons">
-        <a href="#" onclick="switchSection('projects')">مشاريعي</a>
-        <a href="#" onclick="switchSection('contact')">تواصل</a>
-        <a href="Haidar-CV.pdf" download>تحميل CV</a>
-      </div>
-      <div class="social-icons">
-        <a href="https://t.me/Haidar790"><i class="fab fa-telegram"></i></a>
-        <a href="mailto:haidaralhelly@gmail.com"><i class="fas fa-envelope"></i></a>
-        <a href="https://github.com/haidar7900"><i class="fab fa-github"></i></a>
-      </div>
-    </section><section id="about">
-  <h2>عنّي</h2>
-  <p>أنا مطوّر مختص في مجال اختبار الاختراق، أستخدم أدواتي لتسريع اكتشاف الثغرات، ودمجت الذكاء الاصطناعي في فحص الردود وتحليل السلوك.</p>
-</section>
-
-<section id="projects">
-  <h2>مشاريعي</h2>
-  <ul>
-    <li>X-HAWKEYE - أداة هجومية ذكية بـ50 ميزة</li>
-    <li>AutoRecon AI - كشف ثغرات تلقائي عبر تلغرام</li>
-    <li>ReportBot - توليد تقارير PDF بشكل آلي</li>
-  </ul>
-</section>
-
-<section id="ai">
-  <h2>مساعد AI</h2>
-  <p>ادخل مسار فحص وسأعطيك اقتراح:</p>
-  <input id="ai_input" placeholder="مثال: /login?id=1" style="width:100%;padding:10px;">
-  <pre id="ai_output" style="background:#111;color:#0f0;padding:10px;margin-top:10px;"></pre>
-  <button onclick="document.getElementById('ai_output').textContent='→ فحص '+document.getElementById('ai_input').value+' باستخدام nuclei + ffuf\n→ تحقق من البراميتر المخفي أو صلاحيات الوصول.'">اقترح</button>
-</section>
-
-<section id="tools" class="tools">
-  <h2>أدواتي المفضلة</h2>
-  <i class="fas fa-bug"></i> sqlmap
-  <i class="fas fa-network-wired"></i> nuclei
-  <i class="fas fa-code"></i> burp suite
-  <i class="fas fa-terminal"></i> ffuf
-</section>
-
-<section id="timeline" class="timeline">
-  <h2>المسار المهني</h2>
-  <div>2021 – تعلم الأساسيات وبناء أول سكربتات</div>
-  <div>2022 – دخول مجال Bug Bounty وتحقيق أول تقرير</div>
-  <div>2023 – تطوير أدوات خاصة مثل X-HAWKEYE</div>
-  <div>2024 – اعتماد الذكاء الاصطناعي بتحليل الفحوصات</div>
-</section>
-
-<section id="tower" class="tower">
-  <h2>برج الاختراق</h2>
-  <p><i class="fas fa-layer-group"></i> Recon</p>
-  <p><i class="fas fa-sitemap"></i> Enumeration</p>
-  <p><i class="fas fa-exclamation-triangle"></i> Exploitation</p>
-  <p><i class="fas fa-clipboard-check"></i> Reporting</p>
-</section>
-
-<section id="faq" class="faq">
-  <h2>الأسئلة الشائعة</h2>
-  <div><strong>هل تعمل بشكل فردي؟</strong><br>نعم، أعمل على أدواتي واختباراتي بشكل مستقل مع بعض التعاونات.</div>
-  <div><strong>هل تستخدم أدوات مفتوحة المصدر؟</strong><br>نعم، وأعدل عليها لتناسب حالات خاصة وثغرات منطقية.</div>
-  <div><strong>هل يمكن التعاون معك؟</strong><br>بالتأكيد، راسلني عبر Telegram.</div>
-</section>
-
-<section id="contact">
-  <h2>تواصل</h2>
-  <p>Telegram: <a href="https://t.me/Haidar790">@Haidar790</a></p>
-  <p>Email: haidaralhelly@gmail.com</p>
-</section>
-
-<footer>
-  جميع الحقوق محفوظة © 2025 حيدر الجنابي
-</footer>
-
-  </div>
-</body>
+<body onload="switchSection('home')">
+<canvas id="bg"></canvas>
+<div class="sidebar">
+  <h2 onclick="switchSection('home')">حيدر الجنابي</h2>
+  <a href="#" onclick="switchSection('projects')">المشاريع</a>
+  <a href="#" onclick="switchSection('ai')">الذكاء الاصطناعي</a>
+  <a href="#" onclick="switchSection('tools')">أدواتي</a>
+  <a href="#" onclick="switchSection('timeline')">المسار المهني</a>
+  <a href="#" onclick="switchSection('faq')">الأسئلة</a>
+  <a href="#" onclick="switchSection('contact')">تواصل</a>
+</div><div class="main">
+  <section id="home" class="active hero">
+    <img src="profile.jpg" alt="Haidar">
+    <h1>حيدر الجنابي</h1>
+    <p>باحث أمني، مطوّر أدوات سيبرانية، وذكاء صناعي</p>
+    <div>
+      <a class="btn" href="#" onclick="switchSection('projects')">مشاريعي</a>
+      <a class="btn" href="Haidar-CV.pdf" download>تحميل CV</a>
+    </div>
+  </section>  <section id="projects">
+    <h2>المشاريع</h2>
+    <div class="cyber-card">
+      <img src="https://i.imgur.com/kXHJzEh.jpg" alt="project">
+      <p>X-HAWKEYE: أداة هجومية ذكية تشمل كل أدوات الفحص وذكاء اصطناعي.</p>
+    </div>
+    <div class="cyber-card">
+      <img src="https://i.imgur.com/I6XjZV5.jpg" alt="project">
+      <p>AutoRecon AI: أداة Recon تلقائية عبر Termux وTelegram.</p>
+    </div>
+  </section>  <section id="ai">
+    <h2>مساعد AI</h2>
+    <div class="cyber-card">
+      <img src="https://i.imgur.com/2RgiN6g.jpg" alt="AI">
+      <input id="ai_input" placeholder="مثال: /admin?id=1" style="width:100%;padding:10px;margin-top:10px;">
+      <pre id="ai_output" style="background:#111;padding:10px;margin-top:10px;color:#0f0;"></pre>
+      <button onclick="document.getElementById('ai_output').textContent='→ استخدم nuclei + ffuf على '+document.getElementById('ai_input').value">تحليل ذكي</button>
+    </div>
+  </section>  <section id="tools">
+    <h2>أدواتي</h2>
+    <div class="cyber-card">
+      <p><i class="fas fa-bug"></i> sqlmap</p>
+      <p><i class="fas fa-network-wired"></i> nuclei</p>
+      <p><i class="fas fa-terminal"></i> ffuf</p>
+      <p><i class="fas fa-globe"></i> subfinder</p>
+    </div>
+  </section>  <section id="timeline">
+    <h2>المسار المهني</h2>
+    <div class="cyber-card">
+      <p>2021 – بداية في اختبار الاختراق</p>
+      <p>2022 – تطوير أدوات خاصة</p>
+      <p>2023 – أول نجاحات في Bug Bounty</p>
+      <p>2024 – إدماج AI في عمليات الفحص</p>
+    </div>
+  </section>  <section id="faq">
+    <h2>الأسئلة الشائعة</h2>
+    <div class="cyber-card">
+      <p><strong>هل تعمل بشكل فردي؟</strong><br>نعم، لكن أتعاون حسب المشروع.</p>
+      <p><strong>هل لديك أدوات خاصة؟</strong><br>نعم، X-HAWKEYE وAutoRecon.</p>
+    </div>
+  </section>  <section id="contact">
+    <h2>تواصل</h2>
+    <div class="cyber-card">
+      <p>Telegram: <a href="https://t.me/Haidar790">@Haidar790</a></p>
+      <p>Email: haidaralhelly@gmail.com</p>
+    </div>
+  </section>  <footer>
+    جميع الحقوق محفوظة © 2025 حيدر الجنابي
+  </footer>
+</div><script>
+function switchSection(id) {
+  document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+const canvas = document.getElementById('bg');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+const stars = Array(150).fill().map(() => ({
+  x: Math.random()*canvas.width,
+  y: Math.random()*canvas.height,
+  r: Math.random()*1.5 + 0.5
+}));
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = '#00fff055';
+  stars.forEach(s => {
+    ctx.beginPath();
+    ctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
+    ctx.fill();
+    s.y += 0.3;
+    if(s.y > canvas.height) s.y = 0;
+  });
+  requestAnimationFrame(animate);
+}
+animate();
+</script></body>
 </html>
