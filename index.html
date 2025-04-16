@@ -2,22 +2,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>حيدر الجنابي | Cyber One Page</title>
+  <title>حيدر الجنابي | الموقع الرسمي</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     body { margin: 0; background: #0a0a0a; color: #fff; font-family: 'Segoe UI', sans-serif; scroll-behavior: smooth; }
-    .sidebar { position: fixed; top: 0; left: 0; width: 240px; height: 100%; background: #111; padding: 40px 20px; box-shadow: 3px 0 8px rgba(0,255,255,0.1); }
-    .sidebar h2 { color: #00fff0; font-size: 20px; text-align: center; margin-bottom: 30px; }
+    .sidebar { position: fixed; top: 0; left: 0; width: 240px; height: 100%; background: #111; padding: 40px 20px; box-shadow: 3px 0 8px rgba(0,255,255,0.1); overflow-y: auto; }
+    .sidebar h2 { color: #00fff0; font-size: 20px; text-align: center; margin-bottom: 30px; cursor: pointer; transition: 0.3s; }
+    .sidebar h2:hover { color: #0ff; }
     .sidebar a { display: block; color: white; text-decoration: none; padding: 10px 15px; margin-bottom: 10px; border-radius: 6px; transition: 0.3s; text-align: center; }
     .sidebar a:hover, .sidebar a.active { background: #00fff0; color: #000; }
     .main { margin-left: 260px; padding: 40px 30px; }
-    section { display: none; padding-bottom: 40px; border-bottom: 1px solid #222; }
-    section.active { display: block; animation: fadeIn 0.5s ease-in-out; }
+    section { display: none; padding-bottom: 40px; border-bottom: 1px solid #222; animation: fadeIn 0.5s ease-in-out; }
+    section.active { display: block; }
     h1, h2 { color: #00fff0; }
     p, li { color: #ccc; line-height: 1.7; font-size: 15px; }
     ul { padding-right: 20px; }
     .lang-switch { text-align: center; margin-top: 20px; }
-    .lang-switch button { background: #00fff0; color: #000; border: none; padding: 8px 16px; font-weight: bold; cursor: pointer; border-radius: 5px; }
+    .lang-switch button { background: #00fff0; color: #000; border: none; padding: 8px 16px; font-weight: bold; cursor: pointer; border-radius: 5px; margin: 2px; }
+    .hero-box { text-align: center; padding: 50px 20px; background: radial-gradient(circle, #00161d, #000); border-radius: 10px; }
+    .hero-box img { width: 160px; height: 160px; border-radius: 50%; border: 4px solid #00fff0; margin-bottom: 15px; }
+    .hero-box h1 { margin: 10px 0; font-size: 28px; background: linear-gradient(to right, #00fff0, #0ff); -webkit-background-clip: text; color: transparent; }
+    .hero-box p { color: #aaa; max-width: 500px; margin: auto; }
+    .hero-btns a { display: inline-block; margin: 10px; background: #00fff0; color: #000; padding: 10px 20px; border-radius: 30px; font-weight: bold; text-decoration: none; transition: 0.3s; }
+    .hero-btns a:hover { background: #0ff; }
+    .social-icons i { margin: 10px; font-size: 20px; color: #00fff0; transition: 0.3s; }
+    .social-icons i:hover { color: #fff; }
+    footer { text-align: center; padding: 20px; color: #666; font-size: 13px; margin-top: 40px; }
     @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
   </style>
   <script>
@@ -27,7 +37,9 @@
       document.getElementById(id).classList.add('active');
       const links = document.querySelectorAll('.sidebar a');
       links.forEach(l => l.classList.remove('active'));
-      document.getElementById('btn_' + id).classList.add('active');
+      if (document.getElementById('btn_' + id)) {
+        document.getElementById('btn_' + id).classList.add('active');
+      }
     }
     function toggleLang(lang) {
       document.querySelectorAll('[data-lang]').forEach(el => {
@@ -38,8 +50,7 @@
 </head>
 <body onload="switchSection('home'); toggleLang('ar')">
   <div class="sidebar">
-    <h2>حيدر الجنابي</h2>
-    <a href="#" id="btn_home" onclick="switchSection('home')">الرئيسية</a>
+    <h2 onclick="switchSection('home')">حيدر الجنابي</h2>
     <a href="#" id="btn_about" onclick="switchSection('about')">عنّي</a>
     <a href="#" id="btn_projects" onclick="switchSection('projects')">المشاريع</a>
     <a href="#" id="btn_blog" onclick="switchSection('blog')">المدونة</a>
@@ -51,55 +62,64 @@
     </div>
   </div>  <div class="main">
     <section id="home" class="active">
-      <h1 data-lang="ar">أهلاً بك في عالمي السيبراني</h1>
-      <h1 data-lang="en" style="display:none">Welcome to my Cyber World</h1>
-      <p data-lang="ar">أنا باحث ثغرات ومدرب أمن سيبراني. أستخدم أدوات ذكية تعتمد على Termux وTelegram وAI لاكتشاف الثغرات وتحليل الأنظمة.</p>
-      <p data-lang="en" style="display:none">I'm a bug bounty researcher and cyber trainer. I use advanced tools powered by Termux, Telegram, and AI to discover and analyze security flaws.</p>
+      <div class="hero-box">
+        <img src="profile.jpg" alt="Haidar">
+        <h1 data-lang="ar">حيدر أسعد الجنابي</h1>
+        <h1 data-lang="en" style="display:none">Haidar Al-Janabi</h1>
+        <p data-lang="ar">باحث ثغرات ومطوّر أدوات سيبرانية ذكية تعتمد على الذكاء الصناعي وTermux وTelegram. أبحث عن التميز في عالم الأمن.</p>
+        <p data-lang="en" style="display:none">Cybersecurity researcher and automation tool builder using AI, Termux, and Telegram. Focused on smart hacking and vulnerability research.</p>
+        <div class="hero-btns">
+          <a href="#projects" onclick="switchSection('projects')">مشاريعي</a>
+          <a href="#contact" onclick="switchSection('contact')">تواصل مباشر</a>
+          <a href="Haidar-CV.pdf" download>تحميل CV</a>
+        </div>
+        <div class="social-icons">
+          <a href="https://t.me/Haidar790" target="_blank"><i class="fab fa-telegram"></i></a>
+          <a href="https://github.com/haidar7900" target="_blank"><i class="fab fa-github"></i></a>
+          <a href="mailto:haidaralhelly@gmail.com"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
     </section><section id="about">
-  <h2>من أنا / About Me</h2>
-  <p data-lang="ar">اسمي حيدر الجنابي، مختص في اكتشاف الثغرات واختبار الاختراق. أطور أدوات خاصة تعمل عبر تيرمكس وتليجرام مع واجهات ذكية تعتمد على الذكاء الصناعي.</p>
-  <p data-lang="en" style="display:none">My name is Haidar Al-Janabi, specializing in vulnerability discovery and penetration testing. I build private tools integrating Termux, Telegram, and AI-driven interfaces.</p>
+  <h2>عنّي</h2>
+  <p>مختص في اختبار الاختراق وتحليل الثغرات. أعمل على تطوير أدوات فحص ذكية وتحسين أداء العمليات الأمنية باستخدام الذكاء الاصطناعي.</p>
 </section>
 
 <section id="projects">
-  <h2>المشاريع / Projects</h2>
+  <h2>مشاريعي</h2>
   <ul>
-    <li><strong>X-HAWKEYE:</strong> أداة اختبار اختراق تجمع 50+ ميزة بذكاء صناعي.</li>
-    <li><strong>AutoRecon AI:</strong> فحص تلقائي شامل + بوت تلغرام.</li>
-    <li><strong>Report Generator:</strong> مولّد تقارير PDF وMarkdown للثغرات.</li>
+    <li>X-HAWKEYE – سكربت اختبار اختراق مدمج بـ50 ميزة</li>
+    <li>AutoRecon AI – أداة Recon تلقائية مرتبطة بـ Telegram</li>
+    <li>Smart Bug Reporter – مولّد تقارير Markdown + PDF</li>
   </ul>
 </section>
 
 <section id="blog">
-  <h2>المدونة / Blog</h2>
+  <h2>المدونة</h2>
   <ul>
-    <li>Bypass WAF with Tamper Scripts – كيفية تجاوز الجدران باستخدام سكربتات مخصصة.</li>
-    <li>تحليل ملفات JS واستخراج أسرار – JavaScript Recon Techniques</li>
-    <li>Termux Automation للـ Recon – Bash Scripts for Cyber Scanning</li>
+    <li>Bypass WAF باستخدام Tamper Scripts</li>
+    <li>تحليل ملفات JS واستخراج الأسرار</li>
+    <li>أتمتة Recon بالكامل عبر Termux وBash</li>
   </ul>
 </section>
 
 <section id="ai">
-  <h2>الذكاء الاصطناعي / AI Suggestions</h2>
-  <p>أكتب أي مسار أو endpoint وسيقترح AI طريقة الفحص أو الاستغلال:</p>
-  <input type="text" id="ai_input" placeholder="مثل: /login.php?id=1" style="width:100%; padding:10px;">
-  <pre id="ai_output" style="background:#111; color:#0f0; padding:10px; margin-top:10px;"></pre>
-  <button onclick="generateAI()" style="margin-top:10px; padding:8px 14px; background:#00fff0; border:none; color:#000; font-weight:bold;">اقتراح ذكي</button>
-  <script>
-    function generateAI() {
-      let input = document.getElementById('ai_input').value;
-      document.getElementById('ai_output').textContent =
-        'AI Suggestion:\n→ Use nuclei and ffuf on ' + input + '\n→ Check for hidden parameters or bypass via \"randomcase\" tamper';
-    }
-  </script>
+  <h2>الذكاء الاصطناعي</h2>
+  <p>جرّب إدخال مسار أو باراميتر لتحصل على اقتراح ذكي:</p>
+  <input id="ai_input" placeholder="مثال: /admin.php?id=1" style="width:100%;padding:10px;">
+  <pre id="ai_output" style="background:#111;padding:10px;color:#0f0;margin-top:10px;"></pre>
+  <button onclick="document.getElementById('ai_output').textContent='→ استخدم nuclei + ffuf على ' + document.getElementById('ai_input').value + '\n→ تحقق من معايير WAF وحقن GET/POST وHeaders'" style="background:#00fff0;color:#000;padding:8px 16px;margin-top:10px;border:none;">اقتراح</button>
 </section>
 
 <section id="contact">
-  <h2>تواصل / Contact</h2>
-  <p>Telegram: <a href="https://t.me/Haidar790" style="color:#0ff">@Haidar790</a></p>
-  <p>Email: <a href="mailto:haidaralhelly@gmail.com" style="color:#0ff">haidaralhelly@gmail.com</a></p>
+  <h2>تواصل معي</h2>
+  <p>Telegram: <a href="https://t.me/Haidar790">@Haidar790</a></p>
+  <p>Email: haidaralhelly@gmail.com</p>
   <p>Phone: +9647812743891</p>
 </section>
+
+<footer>
+  جميع الحقوق محفوظة © 2025 حيدر الجنابي | موقع احترافي موحد
+</footer>
 
   </div>
 </body>
