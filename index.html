@@ -4,11 +4,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>حيدر الجنابي - باحث ثغرات</title>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
     body { font-family: 'Cairo', sans-serif; background: linear-gradient(to right, #0f2027, #203a43, #2c5364); margin: 0; padding: 0; color: #fff; }
     .container { max-width: 1000px; margin: auto; background: rgba(0,0,0,0.75); padding: 40px; border-radius: 20px; box-shadow: 0 0 25px rgba(0,0,0,0.5); margin-top: 50px; text-align: center; }
     h1 { font-size: 36px; margin-bottom: 10px; }
-    h2 { font-size: 22px; color: #00ffe1; margin-top: 40px; margin-bottom: 20px; }
+    h2 { font-size: 24px; color: #00ffe1; margin-top: 40px; margin-bottom: 20px; }
     p, li { font-size: 16px; line-height: 1.8; text-align: right; }
     ul { padding-right: 20px; text-align: right; }
     .contact { margin-top: 30px; font-weight: bold; font-size: 18px; }
@@ -16,67 +17,89 @@
     .btn { display: inline-block; margin: 10px 10px 0; padding: 10px 25px; background-color: #00ffe1; color: #000; border-radius: 30px; text-decoration: none; font-weight: bold; transition: 0.3s; }
     .btn:hover { background-color: #00c3aa; }
     footer { margin-top: 40px; font-size: 14px; color: #aaa; }
-    .section-box { background-color: rgba(255, 255, 255, 0.05); padding: 20px; border-radius: 15px; margin-top: 20px; }
-    .lang-switch { text-align: left; margin-bottom: -30px; font-size: 14px; }
-    .lang-switch a { color: #00ffe1; text-decoration: none; }
+    .section-box { background-color: rgba(255, 255, 255, 0.05); padding: 25px; border-radius: 15px; margin-top: 30px; }
     .certificates img { width: 180px; border-radius: 10px; margin: 10px; box-shadow: 0 0 10px rgba(0,255,255,0.4); }
+    .cards { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 20px; }
+    .card { background: #111; border-radius: 12px; padding: 20px; width: 260px; box-shadow: 0 0 10px rgba(0,255,255,0.2); transition: 0.3s; }
+    .card:hover { transform: scale(1.03); background: #1c1c1c; }
+    .card h3 { color: #00ffe1; margin-bottom: 10px; }
+    canvas { max-width: 600px; margin-top: 20px; }
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="lang-switch"><a href="index-en.html">Switch to English</a></div>
     <img src="profile.jpg" alt="صورة حيدر" class="profile-pic">
     <h1>حيدر أسعد فؤاد الجنابي</h1>
-    <h2>باحث ثغرات أمنية | مدرب أمن سيبراني | منشئ أدوات ذكية</h2>
-    <p><strong>الموقع:</strong> العراق – بابل</p>
-    <p><strong>الإيميل:</strong> haidaralhelly@gmail.com</p>
-    <p><strong>الهاتف:</strong> +9647812743891</p><div class="section-box">
-  <h2>من أنا؟</h2>
-  <p>باحث أمني محترف ومتخصص في مجال Bug Bounty، ومطور لأدوات اختراق ذكية تعمل على Termux وTelegram Bots. أعمل على اكتشاف الثغرات في مواقع حكومية وتجارية، وأسعى لصناعة محتوى احترافي ينقل تجربتي العملية للجيل الجديد من الباحثين.</p>
+    <h2>Bug Bounty Researcher | Cybersecurity Trainer</h2>
+    <p><strong>Location:</strong> Babylon, Iraq</p>
+    <p><strong>Email:</strong> haidaralhelly@gmail.com</p>
+    <p><strong>Phone:</strong> +9647812743891</p><div class="section-box">
+  <h2>About Me</h2>
+  <p>I'm a cybersecurity expert with a deep focus on web application vulnerabilities, automation, and penetration testing using tools like Termux, Python, and AI. I develop advanced scripts and share knowledge with the community through smart tools and training.</p>
 </div>
 
 <div class="section-box">
-  <h2>المهارات</h2>
-  <ul>
-    <li>تحليل ثغرات SQL/XSS/IDOR والمنطقية</li>
-    <li>استخدام أدوات قوية: sqlmap, nuclei, ffuf, burp, subfinder, getjs, arjun</li>
-    <li>تحليل جافاسكربت واستخراج التوكنات والـ API endpoints</li>
-    <li>أتمتة الفحص بالكامل داخل Termux وTelegram</li>
-    <li>كتابة تقارير احترافية لبرامج Bug Bounty</li>
-  </ul>
+  <h2>Skills Breakdown</h2>
+  <canvas id="skillsChart"></canvas>
+  <script>
+    const ctx = document.getElementById('skillsChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'radar',
+      data: {
+        labels: ['SQLi', 'XSS', 'Recon', 'Bypass', 'JS Analysis', 'Reporting'],
+        datasets: [{
+          label: 'Skill Level',
+          data: [95, 90, 98, 85, 92, 88],
+          backgroundColor: 'rgba(0, 255, 225, 0.2)',
+          borderColor: '#00ffe1',
+          pointBackgroundColor: '#00ffe1'
+        }]
+      },
+      options: { responsive: true, scales: { r: { ticks: { color: '#fff' }, pointLabels: { color: '#fff' } } } }
+    });
+  </script>
 </div>
 
 <div class="section-box">
-  <h2>الإنجازات</h2>
-  <ul>
-    <li>تطوير سكربت X-HAWKEYE: أداة اختراق ذكية بأكثر من 50 ميزة حصرية</li>
-    <li>فحص مواقع حكومية عراقية واكتشاف ثغرات مؤكدة</li>
-    <li>تحليل ثغرات منطقية تؤدي إلى استرجاع حسابات مغلقة أو تجاوز صلاحيات</li>
-  </ul>
-</div>
-
-<div class="section-box">
-  <h2>الشهادات</h2>
-  <div class="certificates">
-    <img src="cert1.jpg" alt="شهادة 1">
-    <img src="cert2.jpg" alt="شهادة 2">
+  <h2>Achievements</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>X-HAWKEYE</h3>
+      <p>Advanced exploitation script with 50+ integrated features: JS analysis, auto-reporting, AI suggestions, and auto-exploit modes.</p>
+    </div>
+    <div class="card">
+      <h3>Gov Pentests</h3>
+      <p>Discovered logic flaws and SQLi in real government portals with valid permission and full reporting.</p>
+    </div>
+    <div class="card">
+      <h3>Termux Automation</h3>
+      <p>Built full automated bug bounty environment using Termux, Telegram bots, and dynamic scanners.</p>
+    </div>
   </div>
 </div>
 
 <div class="section-box">
-  <h2>روابط مهمة</h2>
-  <a href="https://t.me/Haidar790" class="btn" target="_blank">راسلني على تيليجرام</a>
-  <a href="Haidar-CV.pdf" class="btn" download>تحميل البروفايل PDF</a>
-  <a href="https://github.com/haidar7900/Hd-pro" class="btn" target="_blank">مستودعي على GitHub</a>
+  <h2>Certificates</h2>
+  <div class="certificates">
+    <img src="cert1.jpg" alt="Certificate 1">
+    <img src="cert2.jpg" alt="Certificate 2">
+  </div>
 </div>
 
 <div class="section-box">
-  <h2>رسالة شخصية</h2>
-  <p>كل ثغرة أكتشفها مو هدف… الهدف الحقيقي هو أطور نفسي، أطور غيري، وأبني مجتمع عراقي واعي بالسيبر سكيوريتي.</p>
+  <h2>Quick Access</h2>
+  <a href="https://t.me/Haidar790" class="btn" target="_blank">Contact Me on Telegram</a>
+  <a href="Haidar-CV.pdf" class="btn" download>Download CV (PDF)</a>
+  <a href="https://github.com/haidar7900/Hd-pro" class="btn" target="_blank">View GitHub Repo</a>
+</div>
+
+<div class="section-box">
+  <h2>Vision</h2>
+  <p>My goal is to build a smart Iraqi cyber generation capable of discovering, documenting, and solving security problems using automation, AI, and pure logic — not luck.</p>
 </div>
 
 <p class="contact">Telegram: @Haidar790 | Email: haidaralhelly@gmail.com</p>
-<footer>© 2025 حيدر الجنابي. جميع الحقوق محفوظة.</footer>
+<footer>© 2025 Haidar Al-Janabi. All rights reserved.</footer>
 
   </div>
 </body>
