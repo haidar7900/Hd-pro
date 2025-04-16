@@ -1,50 +1,83 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<!DOCTYPE html><html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>حيدر الجنابي - باحث ثغرات</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: Tahoma, sans-serif; background: #f5f5f5; margin: 0; padding: 0; }
-    .container { max-width: 800px; margin: auto; background: #fff; padding: 30px; box-shadow: 0 0 15px rgba(0,0,0,0.1); margin-top: 40px; text-align: center; }
-    h1 { color: #222; }
-    h2 { color: #444; border-bottom: 1px solid #ccc; padding-bottom: 5px; }
-    p, li { color: #333; line-height: 1.6; text-align: right; }
+    body { font-family: 'Cairo', sans-serif; background: linear-gradient(to right, #0f2027, #203a43, #2c5364); margin: 0; padding: 0; color: #fff; }
+    .container { max-width: 1000px; margin: auto; background: rgba(0,0,0,0.75); padding: 40px; border-radius: 20px; box-shadow: 0 0 25px rgba(0,0,0,0.5); margin-top: 50px; text-align: center; }
+    h1 { font-size: 36px; margin-bottom: 10px; }
+    h2 { font-size: 22px; color: #00ffe1; margin-top: 40px; margin-bottom: 20px; }
+    p, li { font-size: 16px; line-height: 1.8; text-align: right; }
     ul { padding-right: 20px; text-align: right; }
-    .contact { margin-top: 30px; font-weight: bold; }
-    .profile-pic { width: 180px; height: 180px; object-fit: cover; border-radius: 50%; margin-bottom: 20px; }
+    .contact { margin-top: 30px; font-weight: bold; font-size: 18px; }
+    .profile-pic { width: 180px; height: 180px; object-fit: cover; border-radius: 50%; border: 4px solid #00ffe1; margin-bottom: 20px; }
+    .btn { display: inline-block; margin: 10px 10px 0; padding: 10px 25px; background-color: #00ffe1; color: #000; border-radius: 30px; text-decoration: none; font-weight: bold; transition: 0.3s; }
+    .btn:hover { background-color: #00c3aa; }
+    footer { margin-top: 40px; font-size: 14px; color: #aaa; }
+    .section-box { background-color: rgba(255, 255, 255, 0.05); padding: 20px; border-radius: 15px; margin-top: 20px; }
+    .lang-switch { text-align: left; margin-bottom: -30px; font-size: 14px; }
+    .lang-switch a { color: #00ffe1; text-decoration: none; }
+    .certificates img { width: 180px; border-radius: 10px; margin: 10px; box-shadow: 0 0 10px rgba(0,255,255,0.4); }
   </style>
 </head>
 <body>
   <div class="container">
+    <div class="lang-switch"><a href="index-en.html">Switch to English</a></div>
     <img src="profile.jpg" alt="صورة حيدر" class="profile-pic">
     <h1>حيدر أسعد فؤاد الجنابي</h1>
-    <h2>باحث ثغرات أمنية | مدرب أمن سيبراني</h2>
-    <p><strong>المنطقة:</strong> العراق – بابل</p>
+    <h2>باحث ثغرات أمنية | مدرب أمن سيبراني | منشئ أدوات ذكية</h2>
+    <p><strong>الموقع:</strong> العراق – بابل</p>
     <p><strong>الإيميل:</strong> haidaralhelly@gmail.com</p>
-    <p><strong>الهاتف:</strong> +9647812743891</p>
+    <p><strong>الهاتف:</strong> +9647812743891</p><div class="section-box">
+  <h2>من أنا؟</h2>
+  <p>باحث أمني محترف ومتخصص في مجال Bug Bounty، ومطور لأدوات اختراق ذكية تعمل على Termux وTelegram Bots. أعمل على اكتشاف الثغرات في مواقع حكومية وتجارية، وأسعى لصناعة محتوى احترافي ينقل تجربتي العملية للجيل الجديد من الباحثين.</p>
+</div>
 
-    <h2>نبذة تعريفية</h2>
-    <p>باحث أمني متخصص في مجال Bug Bounty واكتشاف الثغرات، أمتلك خبرة عملية متقدمة في اختبار الاختراق وتحليل التطبيقات والشبكات. مطور لأدوات مخصصة داخل Termux، ومتكامل مع بوت تيليجرام ذكي، مع رؤية مستقبلية لصناعة محتوى تدريبي احترافي.</p>
+<div class="section-box">
+  <h2>المهارات</h2>
+  <ul>
+    <li>تحليل ثغرات SQL/XSS/IDOR والمنطقية</li>
+    <li>استخدام أدوات قوية: sqlmap, nuclei, ffuf, burp, subfinder, getjs, arjun</li>
+    <li>تحليل جافاسكربت واستخراج التوكنات والـ API endpoints</li>
+    <li>أتمتة الفحص بالكامل داخل Termux وTelegram</li>
+    <li>كتابة تقارير احترافية لبرامج Bug Bounty</li>
+  </ul>
+</div>
 
-    <h2>المهارات</h2>
-    <ul>
-      <li>تحليل ثغرات SQL/XSS/IDOR والحقن المنطقي</li>
-      <li>استخدام أدوات: sqlmap, nuclei, ffuf, burp, subfinder, getjs, arjun وغيرها</li>
-      <li>أتمتة الفحص والتحليل داخل Termux باستخدام Python</li>
-      <li>استخدام ذكاء صناعي لتحليل الردود وتوليد تقارير</li>
-      <li>إعداد بيئة اختبار كاملة بدون جهاز وهمي</li>
-    </ul>
+<div class="section-box">
+  <h2>الإنجازات</h2>
+  <ul>
+    <li>تطوير سكربت X-HAWKEYE: أداة اختراق ذكية بأكثر من 50 ميزة حصرية</li>
+    <li>فحص مواقع حكومية عراقية واكتشاف ثغرات مؤكدة</li>
+    <li>تحليل ثغرات منطقية تؤدي إلى استرجاع حسابات مغلقة أو تجاوز صلاحيات</li>
+  </ul>
+</div>
 
-    <h2>الإنجازات</h2>
-    <ul>
-      <li>تطوير سكربت X-HAWKEYE الذكي بأكثر من 50 ميزة احترافية</li>
-      <li>فحص واكتشاف ثغرات في مواقع حكومية ومواقع Bug Bounty</li>
-      <li>دمج نتائج الفحص مع بوت تيليجرام وتشغيل دائم في الخلفية</li>
-    </ul>
+<div class="section-box">
+  <h2>الشهادات</h2>
+  <div class="certificates">
+    <img src="cert1.jpg" alt="شهادة 1">
+    <img src="cert2.jpg" alt="شهادة 2">
+  </div>
+</div>
 
-    <h2>للتواصل</h2>
-    <p class="contact">Telegram: @Haidar790 | Email: haidaralhelly@gmail.com</p>
+<div class="section-box">
+  <h2>روابط مهمة</h2>
+  <a href="https://t.me/Haidar790" class="btn" target="_blank">راسلني على تيليجرام</a>
+  <a href="Haidar-CV.pdf" class="btn" download>تحميل البروفايل PDF</a>
+  <a href="https://github.com/haidar7900/Hd-pro" class="btn" target="_blank">مستودعي على GitHub</a>
+</div>
+
+<div class="section-box">
+  <h2>رسالة شخصية</h2>
+  <p>كل ثغرة أكتشفها مو هدف… الهدف الحقيقي هو أطور نفسي، أطور غيري، وأبني مجتمع عراقي واعي بالسيبر سكيوريتي.</p>
+</div>
+
+<p class="contact">Telegram: @Haidar790 | Email: haidaralhelly@gmail.com</p>
+<footer>© 2025 حيدر الجنابي. جميع الحقوق محفوظة.</footer>
+
   </div>
 </body>
 </html>
