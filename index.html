@@ -1,232 +1,99 @@
-<!DOCTYPE html><html lang="ar" dir="rtl">
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>حيدر الجنابي | منصة الأمن السيبراني</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    * { box-sizing: border-box; }
-    body { margin: 0; font-family: 'Segoe UI', sans-serif; background: #0a0a0a; color: #fff; scroll-behavior: smooth; }
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: #111;
-      z-index: 999;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 20px;
-      box-shadow: 0 2px 10px #00fff033;
-    }
-    header h1 { color: #00fff0; margin: 0; font-size: 20px; cursor: pointer; }
-    nav a {
-      color: #00fff0;
-      margin-left: 20px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-    nav a:hover { color: #fff; }
-    main { padding: 100px 20px 60px; max-width: 1200px; margin: auto; }
-    section { margin-bottom: 60px; }
-    h2 { color: #00fff0; margin-bottom: 20px; border-bottom: 1px solid #0ff; padding-bottom: 5px; }
-    .hero { text-align: center; }
-    .hero img {
-      width: 140px;
-      border-radius: 50%;
-      border: 3px solid #00fff0;
-      margin-bottom: 10px;
-    }
-    .hero h1 {
-      font-size: 28px;
-      background: linear-gradient(to right, #0ff, #00f0ff);
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-    .btn {
-      background: #00fff0;
-      color: #000;
-      border: none;
-      padding: 10px 20px;
-      margin: 10px;
-      border-radius: 25px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-    .card {
-      background: #111;
-      border: 1px solid #0ff;
-      padding: 20px;
-      border-radius: 10px;
-      text-align: center;
-    }
-    .card img, .gallery img {
-      width: 100%;
-      border-radius: 10px;
-      margin-bottom: 10px;
-    }
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 15px;
-    }
-    iframe { width: 100%; border-radius: 10px; height: 250px; }
-    footer {
-      text-align: center;
-      padding: 20px;
-      color: #666;
-      font-size: 13px;
-      border-top: 1px solid #333;
-    }
-    #loginBox, #dashboard, #trainer { display: none; }
-    input[type="text"], input[type="password"] { width: 100%; padding: 10px; margin-top: 10px; background: #222; color: #fff; border: 1px solid #0ff; }
-    textarea { width: 100%; height: 100px; margin-top: 10px; padding: 10px; background: #222; color: #fff; border: 1px solid #0ff; }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>حيدر الجنابي | Cyber Hub</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
     <h1 onclick="scrollToSection('home')">حيدر الجنابي</h1>
     <nav>
       <a href="#" onclick="scrollToSection('projects')">مشاريعي</a>
-      <a href="#" onclick="scrollToSection('ai')">الذكاء الصناعي</a>
-      <a href="#" onclick="scrollToSection('tools')">أدواتي</a>
       <a href="#" onclick="scrollToSection('trainer')">مدربي الذكي</a>
+      <a href="#" onclick="scrollToSection('dashboard')">لوحة النشر</a>
       <a href="#" onclick="scrollToSection('gallery')">المعرض</a>
       <a href="#" onclick="scrollToSection('certs')">الشهادات</a>
       <a href="#" onclick="scrollToSection('scripts')">السكربتات</a>
       <a href="#" onclick="scrollToSection('contact')">تواصل</a>
-      <a href="#" onclick="toggleLogin()">تسجيل الدخول</a>
+      <a href="#" onclick="scrollToSection('login')">دخول</a>
     </nav>
-  </header>  <main>
-    <section id="home" class="hero">
-      <img src="profile.jpg" alt="حيدر الجنابي">
-      <h1>حيدر الجنابي</h1>
-      <p>باحث أمني، مطور أدوات، ومدرب ذكاء صناعي</p>
-    </section><section id="projects">
-  <h2>المشاريع</h2>
-  <div class="grid">
-    <div class="card"><p>X-HAWKEYE: أداة اختبار متقدمة</p></div>
-    <div class="card"><p>AutoRecon: فحص تلقائي للمواقع</p></div>
-  </div>
-</section>
+  </header>
 
-<section id="ai">
-  <h2>مساعد AI للفحص</h2>
-  <div class="card">
-    <input type="text" id="ai_input" placeholder="/login?id=1">
-    <pre id="ai_output"></pre>
-    <button class="btn" onclick="document.getElementById('ai_output').textContent='→ استخدم nuclei + ffuf على '+document.getElementById('ai_input').value">تحليل ذكي</button>
-  </div>
-</section>
+  <main>
+    <section id="home">
+      <img src="profile.jpg" alt="حيدر الجنابي" class="avatar"/>
+      <h2>حيدر الجنابي</h2>
+      <p>باحث ثغرات ومطور أدوات أمن سيبراني</p>
+    </section>
 
-<section id="tools">
-  <h2>أدواتي</h2>
-  <div class="grid">
-    <div class="card">sqlmap</div>
-    <div class="card">nuclei</div>
-    <div class="card">ffuf</div>
-  </div>
-</section>
+    <section id="projects">
+      <h2>مشاريعي</h2>
+      <div class="grid">
+        <div class="card">X-HAWKEYE</div>
+        <div class="card">AutoRecon</div>
+      </div>
+    </section>
 
-<section id="trainer">
-  <h2>المدرب الذكي</h2>
-  <div class="card">
-    <p><strong>سؤال اليوم:</strong> ما الفرق بين XSS وSQLi؟</p>
-    <textarea placeholder="اكتب إجابتك..."></textarea>
-    <button class="btn">تحقق</button>
-    <p style="margin-top:10px; color:#0f0">نصيحة: استخدم أدوات Browser Dev Tools لتحليل الردود!</p>
-  </div>
-</section>
+    <section id="trainer">
+      <h2>مدربي الذكي</h2>
+      <div class="card">
+        <p>ما الفرق بين XSS و SQLi؟</p>
+        <textarea placeholder="اكتب إجابتك..."></textarea>
+        <button onclick="alert('إجابة جيدة!')">تحقق</button>
+      </div>
+    </section>
 
-<section id="loginBox">
-  <h2>تسجيل الدخول</h2>
-  <div class="card">
-    <input type="text" id="username" placeholder="اسم المستخدم">
-    <input type="password" id="password" placeholder="كلمة المرور">
-    <button class="btn" onclick="loginUser()">دخول</button>
-    <p>ليس لديك حساب؟ <a href="#" onclick="signupUser()" style="color:#0ff">سجّل الآن</a></p>
-  </div>
-</section>
+    <section id="dashboard">
+      <h2>لوحة النشر</h2>
+      <textarea id="postInput" placeholder="اكتب منشورك..."></textarea>
+      <button onclick="publishPost()">نشر</button>
+      <div id="posts"></div>
+    </section>
 
-<section id="dashboard">
-  <h2>لوحة النشر</h2>
-  <div class="card">
-    <textarea id="newPost" placeholder="اكتب منشورًا..."></textarea>
-    <button class="btn" onclick="postMessage()">نشر</button>
-    <div id="posts" style="margin-top:20px;"></div>
-  </div>
-</section>
+    <section id="gallery">
+      <h2>معرض الصور</h2>
+      <div class="grid">
+        <img src="https://i.imgur.com/kXHJzEh.jpg" />
+        <img src="https://i.imgur.com/I6XjZV5.jpg" />
+      </div>
+    </section>
 
-<section id="gallery">
-  <h2>معرض الصور والفيديوهات</h2>
-  <div class="gallery">
-    <img src="https://i.imgur.com/I6XjZV5.jpg" alt="صورة 1">
-    <img src="https://i.imgur.com/kXHJzEh.jpg" alt="صورة 2">
-    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
-  </div>
-</section>
+    <section id="certs">
+      <h2>الشهادات</h2>
+      <div class="grid">
+        <img src="https://i.imgur.com/OUqM9w3.png" />
+        <img src="https://i.imgur.com/6XHfDLD.png" />
+      </div>
+    </section>
 
-<section id="certs">
-  <h2>الشهادات</h2>
-  <div class="grid">
-    <div class="card"><img src="https://i.imgur.com/6XHfDLD.png" alt="شهادة 1"><p>Certified Ethical Hacker - 2024</p></div>
-    <div class="card"><img src="https://i.imgur.com/OUqM9w3.png" alt="شهادة 2"><p>Web Application Security - 2023</p></div>
-  </div>
-</section>
+    <section id="scripts">
+      <h2>السكربتات</h2>
+      <div class="card">
+        <pre>// سكربت هاوك آي
+print('X-HAWKEYE Ready')</pre>
+        <a href="x-hawkeye.py" download>تحميل</a>
+      </div>
+    </section>
 
-<section id="scripts">
-  <h2>السكربتات</h2>
-  <div class="card">
-    <p><strong>X-HAWKEYE</strong></p>
-    <a href="/scripts/x-hawkeye.py" class="btn" download>تحميل السكربت</a>
-    <pre style="text-align:left;direction:ltr"># sample script line
+    <section id="contact">
+      <h2>تواصل</h2>
+      <p>Email: haidaralhelly@gmail.com</p>
+      <p>Telegram: @Haidar790</p>
+    </section>
 
-print("X-HAWKEYE Launched")</pre> </div> </section>
+    <section id="login">
+      <h2>تسجيل الدخول</h2>
+      <input type="text" id="user" placeholder="اسم المستخدم" />
+      <input type="password" id="pass" placeholder="كلمة المرور" />
+      <button onclick="login()">دخول</button>
+      <p>لا تملك حساب؟ <a href="#" onclick="register()">أنشئ الآن</a></p>
+    </section>
+  </main>
 
-<section id="contact">
-  <h2>تواصل</h2>
-  <p>Email: haidaralhelly@gmail.com</p>
-  <p>Telegram: @Haidar790</p>
-</section>
+  <footer>© 2025 حيدر الجنابي</footer>
 
-  </main>  <footer>
-    جميع الحقوق محفوظة © 2025 حيدر الجنابي
-  </footer>  <script>
-    function scrollToSection(id) {
-      document.querySelectorAll('main section').forEach(s => s.style.display = 'none');
-      document.getElementById(id).style.display = 'block';
-    }
-    function toggleLogin() { scrollToSection('loginBox'); }
-    function signupUser() {
-      const user = prompt("ادخل اسم المستخدم الجديد:");
-      const pass = prompt("ادخل كلمة المرور:");
-      localStorage.setItem(user, pass);
-      alert("تم إنشاء الحساب");
-    }
-    function loginUser() {
-      const u = document.getElementById('username').value;
-      const p = document.getElementById('password').value;
-      if(localStorage.getItem(u) === p){
-        alert("تم تسجيل الدخول");
-        scrollToSection('dashboard');
-      } else {
-        alert("بيانات غير صحيحة");
-      }
-    }
-    function postMessage() {
-      const content = document.getElementById('newPost').value;
-      if(content.trim() !== '') {
-        const box = document.getElementById('posts');
-        box.innerHTML += `<div style='background:#111;padding:10px;border:1px solid #0ff;margin-top:10px;'>${content}</div>`;
-        document.getElementById('newPost').value = '';
-      }
-    }
-    scrollToSection('home');
-  </script></body>
+  <script src="script.js"></script>
+</body>
 </html>
