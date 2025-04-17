@@ -27,21 +27,64 @@
       <h2>حيدر الجنابي</h2>
       <p>باحث ثغرات ومطور أدوات أمن سيبراني</p>
     </section>
+    <!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>حيدر الجنابي | Cyber Hub</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1 onclick="scrollToSection('home')">حيدر الجنابي</h1>
+    <nav>
+      <a href="#" onclick="scrollToSection('projects')">مشاريعي</a>
+      <a href="#" onclick="scrollToSection('trainer')">مدربي الذكي</a>
+      <a href="#" onclick="scrollToSection('dashboard')">لوحة النشر</a>
+      <a href="#" onclick="scrollToSection('gallery')">المعرض</a>
+      <a href="#" onclick="scrollToSection('certs')">الشهادات</a>
+      <a href="#" onclick="scrollToSection('scripts')">السكربتات</a>
+      <a href="#" onclick="scrollToSection('contact')">تواصل</a>
+      <a href="#" onclick="scrollToSection('login')">دخول</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home">
+      <img src="profile.jpg" alt="حيدر الجنابي" class="avatar"/>
+      <h2>حيدر الجنابي</h2>
+      <p>باحث ثغرات ومطور أدوات أمن سيبراني</p>
+    </section>
 
     <section id="projects">
       <h2>مشاريعي</h2>
       <div class="grid">
-        <div class="card">X-HAWKEYE</div>
-        <div class="card">AutoRecon</div>
+        <div class="card">
+          <h3>X-HAWKEYE</h3>
+          <p>أداة اختبار اختراق متقدمة تدمج Nuclei، SQLMap، FFUF، وذكاء صناعي تفاعلي.</p>
+          <a href="https://github.com/haidar7900/x-hawkeye" target="_blank">معاينة</a>
+        </div>
+        <div class="card">
+          <h3>AutoRecon AI</h3>
+          <p>أداة فحص تلقائي للمجالات والساب دومينات، مربوطة بتلغرام وTermux.</p>
+        </div>
+        <div class="card">
+          <h3>SecureBot</h3>
+          <p>روبوت تحليل استجابات حماية باستخدام AI، يدعم تحليل JSON/XML.</p>
+        </div>
+        <div class="card">
+          <h3>BugTrackr</h3>
+          <p>نظام تعقب تقارير Bug Bounty مع واجهة رسومية ورسائل بريدية تلقائية.</p>
+        </div>
       </div>
     </section>
-
     <section id="trainer">
       <h2>مدربي الذكي</h2>
       <div class="card">
-        <p>ما الفرق بين XSS و SQLi؟</p>
+        <p><strong>سؤال اليوم:</strong> ما الفرق بين XSS وSQLi؟</p>
         <textarea placeholder="اكتب إجابتك..."></textarea>
-        <button onclick="alert('إجابة جيدة!')">تحقق</button>
+        <button onclick="alert('إجابة ممتازة! استمر بالتدريب')">تحقق</button>
       </div>
     </section>
 
@@ -53,47 +96,33 @@
     </section>
 
     <section id="gallery">
-      <h2>معرض الصور</h2>
-      <div class="grid">
-        <img src="https://i.imgur.com/kXHJzEh.jpg" />
-        <img src="https://i.imgur.com/I6XjZV5.jpg" />
+      <h2>معرض الصور والفيديو</h2>
+      <div class="gallery">
+        <img src="https://i.imgur.com/kXHJzEh.jpg" alt="هاكر ترمينال" />
+        <img src="https://i.imgur.com/I6XjZV5.jpg" alt="لوحة فحص" />
+        <img src="https://i.imgur.com/RYKPGNC.jpeg" alt="بيئة Cyber" />
+        <iframe src="https://www.youtube.com/embed/V8HJ2Fh4zM8" allowfullscreen></iframe>
       </div>
     </section>
 
     <section id="certs">
       <h2>الشهادات</h2>
       <div class="grid">
-        <img src="https://i.imgur.com/OUqM9w3.png" />
-        <img src="https://i.imgur.com/6XHfDLD.png" />
+        <div class="card">
+          <img src="https://i.imgur.com/6XHfDLD.png" alt="CEH" />
+          <p>Certified Ethical Hacker - 2024</p>
+        </div>
+        <div class="card">
+          <img src="https://i.imgur.com/OUqM9w3.png" alt="OWASP" />
+          <p>OWASP Top 10 Mastery - 2023</p>
+        </div>
+        <div class="card">
+          <img src="https://i.imgur.com/WLbdrhy.png" alt="AI & Security" />
+          <p>AI & Cybersecurity Fundamentals</p>
+        </div>
+        <div class="card">
+          <img src="https://i.imgur.com/T8ePBkl.png" alt="Web Exploitation" />
+          <p>Offensive Web Exploitation</p>
+        </div>
       </div>
     </section>
-
-    <section id="scripts">
-      <h2>السكربتات</h2>
-      <div class="card">
-        <pre>// سكربت هاوك آي
-print('X-HAWKEYE Ready')</pre>
-        <a href="x-hawkeye.py" download>تحميل</a>
-      </div>
-    </section>
-
-    <section id="contact">
-      <h2>تواصل</h2>
-      <p>Email: haidaralhelly@gmail.com</p>
-      <p>Telegram: @Haidar790</p>
-    </section>
-
-    <section id="login">
-      <h2>تسجيل الدخول</h2>
-      <input type="text" id="user" placeholder="اسم المستخدم" />
-      <input type="password" id="pass" placeholder="كلمة المرور" />
-      <button onclick="login()">دخول</button>
-      <p>لا تملك حساب؟ <a href="#" onclick="register()">أنشئ الآن</a></p>
-    </section>
-  </main>
-
-  <footer>© 2025 حيدر الجنابي</footer>
-
-  <script src="script.js"></script>
-</body>
-</html>
